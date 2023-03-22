@@ -15,7 +15,7 @@
 6. Napisz program, który w nieskończoność pyta użytkownika o liczby całkowite. Pętla nieskończona powinna się zakończyć gdy użytkownik wprowadzi liczbę mniejszą od zera. Do opuszczenia pętli nieskończonej użyj instrukcji break. 
 7. Napisz program umożliwiający wprowadzanie n liczb oraz sortujący te liczby metodą bąbelkową lub wstawiania. Wyniki wyświetlaj na konsoli.
 
-  ### LAB_02
+  ### LAB_03
 1. Grupa laboratoryjna składa się z n studentów (wartość n podaje użytkownik). Wprowadzamy liczbę punktów dla każdego studenta. Napisz program, który obliczy średnią liczbę punktów w grupie z wykorzystaniem pętli while. 
 2. Napisz  program,  który  pozwoli  na  wczytanie  10  liczb  i  wyznaczeniu  ilości  oraz  sumy  liczb ujemnych i dodatnich podanych przez użytkownika. 
 3. Dany jest ciąg n liczb (n>0), napisz program pozwalający na obliczenie sumy wszystkich liczb parzystych w danym ciągu. 
