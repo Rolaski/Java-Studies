@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="229f697d-d8e7-4b45-9f40-a797a00e5825" name="Changes" comment="" />
+    <list default="true" id="cfcabe95-8861-4a45-9e11-f66a21281a9d" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,7 +23,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Nh10eyZ6vSCrgHtiDcPPc7aYqg" />
+  <component name="ProjectId" id="2OETIe9yL73myRT33fktOKwRfyv" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -32,18 +32,30 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/Admin/IdeaProjects/Java-Zajecia/Lab05"
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="229f697d-d8e7-4b45-9f40-a797a00e5825" name="Changes" comment="" />
-      <created>1680101279870</created>
+      <changelist id="cfcabe95-8861-4a45-9e11-f66a21281a9d" name="Changes" comment="" />
+      <created>1681124663608</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1680101279870</updated>
+      <updated>1681124663608</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
