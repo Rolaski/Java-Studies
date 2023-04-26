@@ -29,5 +29,8 @@
 
   ### LAB_05
 1.
-2. Napisz program, w którym będą dwie klasy: Samochod i SamochodOsobowy. W klasach tych powinnyznajdować się następujące pola:Samochod: Marka, Model, Nadwozie, Kolor, Rok produkcji, Przebieg (nie może być ujemny)SamochodOsobowy: Waga (powinna być z przedziału 2 t –4,5 t), Pojemność silnika (powinna być z przedziału 0,8-3,0), Ilość osóbKlasa SamochodOsobowy dziedziczy po klasie Samochod. W obydwu klasach utwórz konstruktor, którypobierze dane od użytkownika. Dodatkowo w klasie Samochod przeciąż konstruktor w taki sposób, bywartości pól były parametrami metody. W klasie Samochod utwórz także metodę, która wyświetliinformacje o samochodzie. Przesłoń ją w klasie SamochodOsobowy.W  metodzie  Main() utwórz obiekt klasy  SamochodOsobowy oraz  dwa  obiekty klasy Samochod(wykorzystując różne konstruktory). Wyświetl informacje o samochodach. 
+2. Napisz program, w którym będą dwie klasy: Samochod i SamochodOsobowy. W klasach tych powinnyznajdować się następujące pola:Samochod: Marka, Model, Nadwozie, Kolor, Rok produkcji, Przebieg (nie może być ujemny)
+SamochodOsobowy: Waga (powinna być z przedziału 2 t –4,5 t), 
+Pojemność silnika (powinna być z przedziału 0,8-3,0), 
+Ilość osóbKlasa SamochodOsobowy dziedziczy po klasie Samochod. W obydwu klasach utwórz konstruktor, którypobierze dane od użytkownika. Dodatkowo w klasie Samochod przeciąż konstruktor w taki sposób, bywartości pól były parametrami metody. W klasie Samochod utwórz także metodę, która wyświetliinformacje o samochodzie. Przesłoń ją w klasie SamochodOsobowy.W  metodzie  Main() utwórz obiekt klasy  SamochodOsobowy oraz  dwa  obiekty klasy Samochod(wykorzystując różne konstruktory). Wyświetl informacje o samochodach. 
 3. Należy  zaimplementować  aplikację  wykorzystującą:kompozycję  i  dziedziczenie,rzutowanieoraz operator thisi metodę super dla następujących klas Księgarnia, Podręcznik, Powieść, Klient, Książka
