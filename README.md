@@ -28,7 +28,7 @@
 3. Stwórz program w którym będzie  utworzonych kilka  obiektów typu Gatunek. Klasa  Gatunek powinna zawierać następujące pola: nazwę rodzaju, nazwę gatunkową, liczbę chromosomów 2n, podstawową liczbę chromosomów x, opis oraz metody: podającą pełną nazwę (Rodzaj + gatunek), podającą  haploidalną  liczbę  chromosomów  n,  wypisującą  wszystkie  dane,  klonującą  obiekt –metoda powinna zwracać odnośnik do nowego obiektu typu Gatunek o wartościach pól takich samych jak w obiekcie, w którym została wywołana.W programie powinny być użyte wszystkie metody.kt –metoda powinna zwracać odnośnik do nowego obiektu typu Gatunek o wartościach pól takich samych jak w obiekcie, w którym została wywołana.W programie powinny być użyte wszystkie metody.
 
   ### LAB_05
-1.
+1. Lista kroków do wykonania
 2. Napisz program, w którym będą dwie klasy: Samochod i SamochodOsobowy. W klasach tych powinnyznajdować się następujące pola:Samochod: Marka, Model, Nadwozie, Kolor, Rok produkcji, Przebieg (nie może być ujemny)
 SamochodOsobowy: Waga (powinna być z przedziału 2 t –4,5 t), 
 Pojemność silnika (powinna być z przedziału 0,8-3,0), 
