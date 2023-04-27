@@ -16,13 +16,13 @@ public class PersonalCar extends Car
         while(this.weight > 4.5 || this.weight < 2)
         {
             JOptionPane.showMessageDialog(null, "Weight must be in the range of 2t - 4.5t");
-            this.weight = Double.parseDouble(JOptionPane.showInputDialog("Enter new weight"));
+            this.weight = Double.parseDouble(JOptionPane.showInputDialog("Enter new weight for "+model));
         }
 
         while(this.engineCapacity > 3 || this.engineCapacity < 0.8)
         {
             JOptionPane.showMessageDialog(null, "engine capacity must be in the range of 0.8 - 3.0");
-            this.engineCapacity = Double.parseDouble(JOptionPane.showInputDialog("Enter new Engine capacity"));
+            this.engineCapacity = Double.parseDouble(JOptionPane.showInputDialog("Enter new Engine capacity for "+model));
         }
     }
 

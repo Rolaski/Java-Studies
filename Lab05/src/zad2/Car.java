@@ -17,7 +17,7 @@ public class Car
         while(this.mileage < 0)
         {
             JOptionPane.showMessageDialog(null, "Mileage cannot be negative");
-            this.mileage = Integer.parseInt(JOptionPane.showInputDialog("Enter new mileage"));
+            this.mileage = Integer.parseInt(JOptionPane.showInputDialog("Enter new mileage for "+model));
         }
     }
 
