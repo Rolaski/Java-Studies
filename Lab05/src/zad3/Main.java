@@ -26,9 +26,9 @@ public class Main
             {
                 case 1:
                     System.out.println("==================================");
-                    System.out.println(book1);
-                    System.out.println(book2);
-                    System.out.println(book3);
+                    System.out.println("1: "+book1);
+                    System.out.println("2: "+book2);
+                    System.out.println("3: "+book3);
                     System.out.println("==================================\n");
 
                     //Borrow section
@@ -45,14 +45,17 @@ public class Main
                             case 1:
                                 myList.add(book1);
                                 myClient.add(client.name+" "+client.surname);
+                                JOptionPane.showMessageDialog(null, "Successfully borrowed a book!");
                                 break;
                             case 2:
                                 myList.add(book2);
                                 myClient.add(client.name+" "+client.surname);
+                                JOptionPane.showMessageDialog(null, "Successfully borrowed a book!");
                                 break;
                             case 3:
                                 myList.add(book3);
                                 myClient.add(client.name+" "+client.surname);
+                                JOptionPane.showMessageDialog(null, "Successfully borrowed a book!");
                                 break;
                             default:
                                 JOptionPane.showMessageDialog(null,"Wrong option! You must do it again XD");
@@ -62,9 +65,9 @@ public class Main
                     break;
                 case 2:
                     System.out.println("==================================");
-                    System.out.println(coursebook1);
-                    System.out.println(coursebook2);
-                    System.out.println(coursebook3);
+                    System.out.println("1: "+coursebook1);
+                    System.out.println("2: "+coursebook2);
+                    System.out.println("3: "+coursebook3);
                     System.out.println("==================================\n");
 
                     //Borrow section
@@ -81,14 +84,17 @@ public class Main
                             case 1:
                                 myList.add(coursebook1);
                                 myClient.add(client.name+" "+client.surname);
+                                JOptionPane.showMessageDialog(null, "Successfully borrowed a coursebook!");
                                 break;
                             case 2:
                                 myList.add(coursebook2);
                                 myClient.add(client.name+" "+client.surname);
+                                JOptionPane.showMessageDialog(null, "Successfully borrowed a coursebook!");
                                 break;
                             case 3:
                                 myList.add(coursebook3);
                                 myClient.add(client.name+" "+client.surname);
+                                JOptionPane.showMessageDialog(null, "Successfully borrowed a coursebook!");
                                 break;
                             default:
                                 JOptionPane.showMessageDialog(null,"Wrong option! You must do it again XD");
@@ -99,8 +105,8 @@ public class Main
                     break;
                 case 3:
                     System.out.println("==================================");
-                    System.out.println(novel1);
-                    System.out.println(novel2);
+                    System.out.println("1: "+novel1);
+                    System.out.println("2: "+novel2);
                     System.out.println("==================================\n");
 
                     //Borrow section
@@ -117,10 +123,12 @@ public class Main
                             case 1:
                                 myList.add(novel1);
                                 myClient.add(client.name+" "+client.surname);
+                                JOptionPane.showMessageDialog(null, "Successfully borrowed a novel!");
                                 break;
                             case 2:
                                 myList.add(novel2);
                                 myClient.add(client.name+" "+client.surname);
+                                JOptionPane.showMessageDialog(null, "Successfully borrowed a novel!");
                                 break;
                             default:
                                 JOptionPane.showMessageDialog(null,"Wrong option! You must do it again XD");
@@ -129,6 +137,10 @@ public class Main
                     }
                     break;
                 case 4:
+                    if(myList.isEmpty())
+                    {
+                        JOptionPane.showMessageDialog(null, "there aren't borrowed books!");
+                    }
                     System.out.println("\n");
                     for(int i=0; i<myClient.size(); i++)
                     {
