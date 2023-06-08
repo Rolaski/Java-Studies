@@ -6,7 +6,7 @@ public class main
 		Prostokat figura1 = new Prostokat(5,10, "czerwony");
 		Trojkat figura2 = new Trojkat(8,5, "żółty");
 		Kwadrat figura3 = new Kwadrat(9, "niebieski");
-		Punkt punkt1 = new Punkt(-5,6);
+		Punkt punkt1 = new Punkt(1,1);
 		Prostokat figura5 = new Prostokat(92, 47, "chabrowy");
 		Trojkat figura6 = new Trojkat(42,18, "fioletowy");
 		Kwadrat figura7 = new Kwadrat(100, "zielony");
@@ -29,5 +29,12 @@ public class main
 		{
 			tablicaFigur[i].Opis();
 		}
+
+		IFigury kwadrat = new Kwadrat(7,"ogórkowy");
+		System.out.println(kwadrat.getPowierzchnia()); kwadrat.wPolu(punkt1);
+		IFigury prostokat = new Prostokat(5,15, "pomidorowy");
+		System.out.println(prostokat.getPowierzchnia()); prostokat.wPolu(punkt1);
+		IFigury trojkat = new Trojkat(5,3,"cukiniowy");
+		System.out.println(trojkat.getPowierzchnia()); trojkat.wPolu(punkt1);
 	}
 }

@@ -1,6 +1,6 @@
 package zad3;
 
-class Trojkat extends Figura
+class Trojkat extends Figura implements IFigury
 {
 	float wys=0;
 	float podst=0;
@@ -11,12 +11,23 @@ class Trojkat extends Figura
 		this.podst = podst;
 		super.kolor = kolor;
 	}
-
 	@Override
 	void skaluj(float skala)
 	{
 		wys = wys/skala;
 		podst = podst/skala;
+	}
+
+	@Override
+	public float getPowierzchnia()
+	{
+		return (wys*podst)/2;
+	}
+
+	@Override
+	public boolean wPolu(Punkt p)
+	{
+		return false;
 	}
 
 	public String Opis(){
