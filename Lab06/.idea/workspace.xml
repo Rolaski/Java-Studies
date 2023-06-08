@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="947a953b-6cc3-4c11-8a5a-4bccc79dc5a7" name="Changes" comment="comeback">
-      <change afterPath="$PROJECT_DIR$/src/Enum/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Enum/Ranks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="947a953b-6cc3-4c11-8a5a-4bccc79dc5a7" name="Changes" comment="comeback" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
