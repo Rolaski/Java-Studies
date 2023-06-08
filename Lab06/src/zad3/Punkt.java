@@ -1,11 +1,25 @@
 package zad3;
-public class Punkt {
+public class Punkt extends Figura
+{
 	//pola
-    int x = 0;
-    int y = 0;
+    float x = 0;
+    float y = 0;
     // konstruktor
-    Punkt(int x, int y) {
+    Punkt(int x, int y)
+    {
         this.x = x;
         this.y = y;
+    }
+
+    @Override
+    public String Opis()
+    {
+        return null;
+    }
+
+    @Override
+    void skaluj(float skala) {
+        x = x/skala;
+        y = y/skala;
     }
 }

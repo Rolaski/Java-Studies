@@ -1,11 +1,33 @@
 package zad3;
-class main
+public class main
 {
 	public static void main(String[] arg)
 	{
-		Prostokat maly_punkt = new Prostokat(3, 6, "czerwony");
-		Trojkat rownoboczny = new Trojkat(7, 4, "bia�y");
-		//maly_punkt.zwieksz(3,4);
-		
+		Prostokat figura1 = new Prostokat(5,10, "czerwony");
+		Trojkat figura2 = new Trojkat(8,5, "żółty");
+		Kwadrat figura3 = new Kwadrat(9, "niebieski");
+		Punkt punkt1 = new Punkt(-5,6);
+		Prostokat figura5 = new Prostokat(92, 47, "chabrowy");
+		Trojkat figura6 = new Trojkat(42,18, "fioletowy");
+		Kwadrat figura7 = new Kwadrat(100, "zielony");
+		Punkt figura8 = new Punkt(5,-6);
+		Kwadrat figura9 = new Kwadrat(71, "magenta");
+		Prostokat figura10 = new Prostokat(34,18, "beżowy");
+
+		Figura tablicaFigur[] = new Figura[10];
+		tablicaFigur[0] = figura1;
+		tablicaFigur[1] = figura2;
+		tablicaFigur[2] = figura3;
+		tablicaFigur[3] = punkt1;
+		tablicaFigur[4] = figura5;
+		tablicaFigur[5] = figura6;
+		tablicaFigur[6] = figura7;
+		tablicaFigur[7] = figura8;
+		tablicaFigur[8] = figura9;
+		tablicaFigur[9] = figura10;
+		for(int i=0; i< tablicaFigur.length; i++)
+		{
+			tablicaFigur[i].Opis();
+		}
 	}
 }
