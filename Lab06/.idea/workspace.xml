@@ -5,16 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="947a953b-6cc3-4c11-8a5a-4bccc79dc5a7" name="Changes" comment="comeback">
-      <change afterPath="$PROJECT_DIR$/src/zad3/Okrag.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/zad3/RuchFigury.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Enum/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Enum/Ranks.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab06/zad3/Figura.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab06/zad3/Figura.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab06/zad3/Kwadrat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab06/zad3/Kwadrat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab06/zad3/Prostokat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab06/zad3/Prostokat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab06/zad3/Punkt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab06/zad3/Punkt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Lab06/zad3/Trojkat.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Lab06/zad3/Trojkat.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zad3/Trojkat.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zad3/Trojkat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/zad3/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/zad3/main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +17,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -49,6 +43,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2Peiz4PBR0YnsbTkMsco7kBi7TO" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
