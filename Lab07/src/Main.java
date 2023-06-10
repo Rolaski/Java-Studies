@@ -6,20 +6,20 @@ public class Main
     public static void main(String[] args)
     {
         //task 1
-        //task1();
+        task1();
 
         //task2
-//        System.out.println();
-//        try
-//        {
-//            System.out.println("3! = "+silnia(3));
-//            System.out.println("6! = "+silnia(6));
-//            System.out.println("9! = "+silnia(9));
-//        }
-//        catch(silniaException x)
-//        {
-//            System.out.println("Error : "+ x.getMessage());
-//        }
+        System.out.println();
+        try
+        {
+            System.out.println("3! = "+silnia(3));
+            System.out.println("6! = "+silnia(6));
+            System.out.println("9! = "+silnia(9));
+        }
+        catch(silniaException x)
+        {
+            System.out.println("Error : "+ x.getMessage());
+        }
 
         //task3
         try
