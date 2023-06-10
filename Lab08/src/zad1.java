@@ -21,5 +21,6 @@ public class zad1
         }while(!name.equals(noMoreNames));
 
         System.out.println("The unique number of names is: "+names.size());
+        System.out.println(names+" ");
     }
 }
