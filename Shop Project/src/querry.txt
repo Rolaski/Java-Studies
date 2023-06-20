@@ -1,0 +1,8 @@
+1) Wybór wszystkich rzeczy z tabeli pc:	select * from pc
+2) Wybór ilości produktu w tabeli komputerów: SELECT quantity FROM `pc` WHERE idPC=1; 
+3) Ustawienie na sztywno ilości: UPDATE `pc` SET `quantity` = '52' WHERE `pc`.`idPC` = 1;
+
+
+
+========= ADNOTACJE =========
+- ważne jest aby po wykonaniu kwerendy ją uruchomić specjalnym poleceniem tj. nazwaKwerendy.next();
