@@ -277,4 +277,48 @@ public class DataBase
         return updateQuantity;
     }
 
+    //============================= SEKCJA SPRAWDZANIA UŻYTKOWNIKA W BAZIE =============================
+    public boolean login()
+    {
+        boolean isNull = false;
+        Connection connect = null;
+        try
+        {
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "");
+            Statement statement = connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            if(resultSet.next() == true)
+            {
+                isNull = true;
+            }
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return isNull;
+    }
+
+    //============================= SEKCJA SPRAWDZANIA PORTFELA UŻYTKOWNIKA Z BAZY =============================
+    public int walletUser()
+    {
+        int wallet = 0;
+        Connection connect = null;
+        try
+        {
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "");
+            Statement statement = connect.createStatement();
+            ResultSet resultSet = statement.executeQuery(query);
+            while (resultSet.next())
+            {
+                wallet = resultSet.getInt("wallet");
+            }
+
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+        return wallet;
+    }
 }
