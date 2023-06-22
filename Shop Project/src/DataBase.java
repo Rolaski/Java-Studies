@@ -16,7 +16,7 @@ public class DataBase
         this.query = query;
     }
 
-    //wypisywanie PC
+    //============================= SEKCJA WYPISYWANIA KOMPUTERÓW Z BAZY =============================
     public void showPc()
     {
         Connection connect = null;
@@ -32,11 +32,11 @@ public class DataBase
             {
                 System.out.print(i+") "+resultPrint.getString(2)+" ");
                 System.out.print(resultPrint.getString(3)+" ");
-                System.out.print(resultPrint.getString(4)+" ");
-                System.out.print(resultPrint.getString(5)+" ");
-                System.out.print(resultPrint.getString(6)+" ");
-                System.out.print(resultPrint.getString(7)+" ");
-                System.out.print("    price: "+resultPrint.getInt(8)+"\n");
+                System.out.print("CPU: "+resultPrint.getString(4)+" ");
+                System.out.print("GPU: "+resultPrint.getString(5)+" ");
+                System.out.print("RAM: "+resultPrint.getString(6)+" ");
+                System.out.print("DISK: "+resultPrint.getString(7)+" ");
+                System.out.print("PRICE: "+resultPrint.getInt(8)+"zł\n");
                 i++;
             }
             //zakończenie połączenia
@@ -46,7 +46,9 @@ public class DataBase
         }
     }
 
-    //wypisywanie laptopów
+
+
+    //============================= SEKCJA WYPISYWANIA LAPTOPÓW Z BAZY =============================
     public void showLaptop()
     {
         Connection connect = null;
@@ -77,7 +79,9 @@ public class DataBase
         }
     }
 
-    //wypisywanie tabletów
+
+
+    //============================= SEKCJA WYPISYWANIA TABLETÓW Z BAZY =============================
     public void showTablet()
     {
         Connection connect = null;
@@ -105,7 +109,9 @@ public class DataBase
             throw new RuntimeException(e);
         }
     }
-    //wypisywanie telefonow
+
+
+    //============================= SEKCJA WYPISYWANIA TELEFONÓW Z BAZY =============================
     public void showSmartphone()
     {
         Connection connect = null;
@@ -133,7 +139,9 @@ public class DataBase
             throw new RuntimeException(e);
         }
     }
-    //wypisywanie monitorow
+
+
+    //============================= SEKCJA WYPISYWANIA MONITORÓW Z BAZY =============================
     public void showMonitor()
     {
         Connection connect = null;
@@ -160,7 +168,9 @@ public class DataBase
             throw new RuntimeException(e);
         }
     }
-    //wypisywanie klawiatur
+
+
+    //============================= SEKCJA WYPISYWANIA KLAWIATUR Z BAZY =============================
     public void showKeyboard()
     {
         Connection connect = null;
@@ -188,7 +198,9 @@ public class DataBase
             throw new RuntimeException(e);
         }
     }
-    //wypisywanie myszek
+
+
+    //============================= SEKCJA WYPISYWANIA MYSZEK Z BAZY =============================
     public void showMouse()
     {
         Connection connect = null;
@@ -321,4 +333,21 @@ public class DataBase
         }
         return wallet;
     }
+
+    //===================================== SEKCJA WPROWADZANIA DO BAZY ===================================
+    public void productInput()
+    {
+        Connection connect = null;
+        try
+        {
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "");
+            Statement statement = connect.createStatement();
+            statement.executeUpdate(query);
+        }
+        catch (SQLException e)
+        {
+            throw new RuntimeException(e);
+        }
+    }
+
 }

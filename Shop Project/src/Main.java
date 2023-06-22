@@ -1,4 +1,3 @@
-import javax.xml.crypto.Data;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,21 +18,14 @@ public class Main
         int choiceShopping = inputInt();
         switch (choiceShopping)
         {
-            case 1:
-                option1();
-                break;
-            case 2:
-                option2();
-                break;
-            case 3:
-                break;
-            case 4:
-                System.exit(1);
-                break;
-            default:
+            case 1 -> option1();
+            case 2 -> option2();
+            case 3 -> option3();
+            case 4 -> System.exit(1);
+            default -> {
                 System.out.println("\nEnter correct number!");
                 whichOption();
-                break;
+            }
         }
     }
 
@@ -43,7 +35,7 @@ public class Main
 
     public static void option1()
     {
-        System.out.println("\n======================== RETAIL SHOPPING ========================");
+        System.out.println("\n\n================================ RETAIL SHOPPING ==================================");
         System.out.println("Remember that as a retail customer you can buy a maximum of 5 items!");
         while(true)
         {
@@ -107,7 +99,7 @@ public class Main
     //================================ SEKCJA KOSZYKA, ZAKUPU Z STWORZONEGO KOSZYKA ================================
     //======================================= DLA KOMPUTERÓW STACJONARNYCH ========================================
     //sekcja globalnych danych żeby każdy je widział
-    static int sum = 0,money;
+    static int sum = 0,money =0;
     static int[] quantityPc = {0,0,0,0,0};
     static int[] quantityLaptop = {0,0,0,0,0};
     static int[] quantityTablet = {0,0,0,0,0};
@@ -117,17 +109,15 @@ public class Main
     static int[] quantityMouse = {0,0,0,0,0};
     public static void shoppingCartPC()
     {
+        sum =0;
         if(pcOnList.isEmpty() && laptopOnList.isEmpty() && tabletOnList.isEmpty() && smartphoneOnList.isEmpty() && monitorOnList.isEmpty() && keyboardOnList.isEmpty() && mouseOnList.isEmpty())
         {
             x =0;
             System.out.println("Your shopping cart is empty!");
+            money =-5;
         }
         else
         {
-            //wpłacanie hajsu
-            System.out.print("Enter the amount you are paying into your wallet: ");
-            money = inputInt();
-
             //obliczanie sumy kwoty za komputery i zmiana ilości magazynowej
             for(int j=0; j< pcOnList.size(); j++)
             {
@@ -359,7 +349,7 @@ public class Main
     {
         for(int j=0; j< mouseOnList.size(); j++)
         {
-            sum = sum + shoppingCartSum(keyboardOnList.get(j), "mouse","mouse");
+            sum = sum + shoppingCartSum(mouseOnList.get(j), "mouse","mouse");
             quantityCountMouse(j);
         }
     }
@@ -400,14 +390,25 @@ public class Main
         shoppingCartMonitor();
         shoppingCartKeyboard();
         shoppingCartMouse();
-        if((money-sum)<0 || money==0)
+        int rest =0;
+        //tutaj pobieramy hajs od chłopa
+        if(money == 0)
+        {
+            System.out.print("Enter the amount to be deposited into your wallet: ");
+            money = inputInt();
+        }
+        //tutaj sprawdzamy czy klient może dokonać zakupów
+        if((money-sum)<0)
         {
             System.out.println("Your order has been canceled! :(\n");
-            pcOnList.clear();
         }
         else
         {
-            System.out.println("THE ORDER HAS BEEN SENT :)");
+            rest = money - sum;
+            System.out.println("Money left: "+rest);
+            System.out.println("The total price of your order: "+sum);
+            System.out.println("THE ORDER HAS BEEN SENT :)\n");
+
             //pętla do aktualizacji produktów
             for(int j=0; j<5;j++)
             {
@@ -440,9 +441,15 @@ public class Main
                 int quantityNewMouse = shoppingCartQuantityUpdate(j+1, "mouse", "mouse", (quantityActualMouse-quantityMouse[j]));
             }
         }
-        //czyszczenie listy po zakupach
-        pcOnList.clear();
-
+        //czyszczenie listy po zakupach lub próbie zakupy
+        pcOnList.clear(); laptopOnList.clear(); tabletOnList.clear(); smartphoneOnList.clear(); monitorOnList.clear(); keyboardOnList.clear(); mouseOnList.clear();
+        //czyszczenie ilości danych produktów
+        for(int j=0; j<5; j++)
+        {
+            quantityPc[j]=0; quantityLaptop[j]=0; quantityTablet[j] =0; quantitySmartphone[j]=0; quantityMonitor[j]=0; quantityKeyboard[j]=0; quantityMouse[j]=0;
+        }
+        x=0;
+        money = rest;
     }
 
 
@@ -474,30 +481,28 @@ public class Main
                 {
                     System.out.print("Which option do you want to buy?:");
                     int choiceBuy = inputInt();
-                    switch (choiceBuy)
-                    {
-                        case 1:
+                    switch (choiceBuy) {
+                        case 1 -> {
                             System.out.println("Computer number 1 has been added to the cart!\n");
                             pcOnList.add(1);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Computer number 2 has been added to the cart!\n");
                             pcOnList.add(2);
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
                             System.out.println("Computer number 3 has been added to the cart!\n");
                             pcOnList.add(3);
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
                             System.out.println("Computer number 4 has been added to the cart!\n");
                             pcOnList.add(4);
-                            break;
-                        case 5:
+                        }
+                        case 5 -> {
                             System.out.println("Computer number 5 has been added to the cart!\n");
                             pcOnList.add(5);
-                            break;
-                        default:
-                            System.out.print("Enter correct number!\n");
+                        }
+                        default -> System.out.print("Enter correct number!\n");
                     }
                     //zwiekszamy x po dodaniu towaru do koszyka
                     x++;
@@ -530,30 +535,28 @@ public class Main
                 {
                     System.out.print("Which option do you want to buy?:");
                     int choiceBuy = inputInt();
-                    switch (choiceBuy)
-                    {
-                        case 1:
+                    switch (choiceBuy) {
+                        case 1 -> {
                             System.out.println("Laptop number 1 has been added to the cart!\n");
                             laptopOnList.add(1);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Laptop  number 2 has been added to the cart!\n");
                             laptopOnList.add(2);
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
                             System.out.println("Laptop  number 3 has been added to the cart!\n");
                             laptopOnList.add(3);
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
                             System.out.println("Laptop  number 4 has been added to the cart!\n");
                             laptopOnList.add(4);
-                            break;
-                        case 5:
+                        }
+                        case 5 -> {
                             System.out.println("Laptop  number 5 has been added to the cart!\n");
                             laptopOnList.add(5);
-                            break;
-                        default:
-                            System.out.print("Enter correct number!\n");
+                        }
+                        default -> System.out.print("Enter correct number!\n");
                     }
                     x++;
                 }
@@ -584,30 +587,28 @@ public class Main
                 {
                     System.out.print("Which option do you want to buy?:");
                     int choiceBuy = inputInt();
-                    switch (choiceBuy)
-                    {
-                        case 1:
+                    switch (choiceBuy) {
+                        case 1 -> {
                             System.out.println("Tablet number 1 has been added to the cart!\n");
                             tabletOnList.add(1);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Tablet  number 2 has been added to the cart!\n");
                             tabletOnList.add(2);
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
                             System.out.println("Tablet  number 3 has been added to the cart!\n");
                             tabletOnList.add(3);
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
                             System.out.println("Tablet  number 4 has been added to the cart!\n");
                             tabletOnList.add(4);
-                            break;
-                        case 5:
+                        }
+                        case 5 -> {
                             System.out.println("Tablet  number 5 has been added to the cart!\n");
                             tabletOnList.add(5);
-                            break;
-                        default:
-                            System.out.print("Enter correct number!\n");
+                        }
+                        default -> System.out.print("Enter correct number!\n");
                     }
                 }
                 else
@@ -638,30 +639,28 @@ public class Main
                 {
                     System.out.print("Which option do you want to buy?:");
                     int choiceBuy = inputInt();
-                    switch (choiceBuy)
-                    {
-                        case 1:
+                    switch (choiceBuy) {
+                        case 1 -> {
                             System.out.println("Monitor number 1 has been added to the cart!\n");
                             monitorOnList.add(1);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Monitor  number 2 has been added to the cart!\n");
                             monitorOnList.add(2);
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
                             System.out.println("Monitor  number 3 has been added to the cart!\n");
                             monitorOnList.add(3);
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
                             System.out.println("Monitor  number 4 has been added to the cart!\n");
                             monitorOnList.add(4);
-                            break;
-                        case 5:
+                        }
+                        case 5 -> {
                             System.out.println("Monitor  number 5 has been added to the cart!\n");
                             monitorOnList.add(5);
-                            break;
-                        default:
-                            System.out.print("Enter correct number!\n");
+                        }
+                        default -> System.out.print("Enter correct number!\n");
                     }
                 }
                 else
@@ -691,30 +690,28 @@ public class Main
                 {
                     System.out.print("Which option do you want to buy?:");
                     int choiceBuy = inputInt();
-                    switch (choiceBuy)
-                    {
-                        case 1:
+                    switch (choiceBuy) {
+                        case 1 -> {
                             System.out.println("Smartphone number 1 has been added to the cart!\n");
                             smartphoneOnList.add(1);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Smartphone  number 2 has been added to the cart!\n");
                             smartphoneOnList.add(2);
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
                             System.out.println("Smartphone  number 3 has been added to the cart!\n");
                             smartphoneOnList.add(3);
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
                             System.out.println("Smartphone  number 4 has been added to the cart!\n");
                             smartphoneOnList.add(4);
-                            break;
-                        case 5:
+                        }
+                        case 5 -> {
                             System.out.println("Smartphone  number 5 has been added to the cart!\n");
                             smartphoneOnList.add(5);
-                            break;
-                        default:
-                            System.out.print("Enter correct number!\n");
+                        }
+                        default -> System.out.print("Enter correct number!\n");
                     }
                 }
                 else
@@ -745,30 +742,28 @@ public class Main
                 {
                     System.out.print("Which option do you want to buy?:");
                     int choiceBuy = inputInt();
-                    switch (choiceBuy)
-                    {
-                        case 1:
+                    switch (choiceBuy) {
+                        case 1 -> {
                             System.out.println("Keyboard number 1 has been added to the cart!\n");
                             keyboardOnList.add(1);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Keyboard number 2 has been added to the cart!\n");
                             keyboardOnList.add(2);
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
                             System.out.println("Keyboard number 3 has been added to the cart!\n");
                             keyboardOnList.add(3);
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
                             System.out.println("Keyboard number 4 has been added to the cart!\n");
                             keyboardOnList.add(4);
-                            break;
-                        case 5:
+                        }
+                        case 5 -> {
                             System.out.println("Keyboard number 5 has been added to the cart!\n");
                             keyboardOnList.add(5);
-                            break;
-                        default:
-                            System.out.print("Enter correct number!\n");
+                        }
+                        default -> System.out.print("Enter correct number!\n");
                     }
                 }
                 else
@@ -798,30 +793,28 @@ public class Main
                 {
                     System.out.print("Which option do you want to buy?:");
                     int choiceBuy = inputInt();
-                    switch (choiceBuy)
-                    {
-                        case 1:
+                    switch (choiceBuy) {
+                        case 1 -> {
                             System.out.println("Mouse number 1 has been added to the cart!\n");
                             mouseOnList.add(1);
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             System.out.println("Mouse number 2 has been added to the cart!\n");
                             mouseOnList.add(2);
-                            break;
-                        case 3:
+                        }
+                        case 3 -> {
                             System.out.println("Mouse number 3 has been added to the cart!\n");
                             mouseOnList.add(3);
-                            break;
-                        case 4:
+                        }
+                        case 4 -> {
                             System.out.println("Mouse number 4 has been added to the cart!\n");
                             mouseOnList.add(4);
-                            break;
-                        case 5:
+                        }
+                        case 5 -> {
                             System.out.println("Mouse number 5 has been added to the cart!\n");
                             mouseOnList.add(5);
-                            break;
-                        default:
-                            System.out.print("Enter correct number!\n");
+                        }
+                        default -> System.out.print("Enter correct number!\n");
                     }
                 }
                 else
@@ -867,9 +860,16 @@ public class Main
     //=========================================== SEKCJA LOGOWANIA, SPRAWDZANIA DANYCH ===========================
     public static void option2()
     {
-        System.out.println("\n\n======================== WHOLESALE SHOPPING ========================");
-        for(int j=0; j<3; j++)
+        System.out.println("\n\n**************** LOGIN ****************");
+        for(int j=0; j<=3; j++)
         {
+            //przyjazd policji po nieudanych próbach logowania
+            if(j==3)
+            {
+                System.out.println("You wanted to break in! The police will come for you soon");
+                System.exit(1);
+            }
+
             System.out.print("Enter login: ");
             login = inputString();
             System.out.print("Enter password: ");
@@ -877,12 +877,11 @@ public class Main
 
             DataBase loginUser = new DataBase("SELECT login,password FROM jdbc.customers where login = '"+login+"' AND password = '"+password+"';");
             boolean loginAccept = loginUser.login();
-            if(loginAccept == true)
+            if(loginAccept)
             {
                 loginSuccessful();
             }
-            else
-            {
+            else {
                 System.out.println("\nIncorrect login details!");
             }
         }
@@ -892,6 +891,7 @@ public class Main
     //====================================== DOSTAJESZ DOSTĘP DO PANELU ZAKUPOWEGO ============================
     public static void loginSuccessful()
     {
+        System.out.println("\n\n======================== WHOLESALE SHOPPING ========================");
         System.out.println("Hi "+login+", as a logged in customer you have unlimited purchases!");
         while(true)
         {
@@ -948,27 +948,27 @@ public class Main
     }
 
     //==================================== SEKCJA KOSZYKA, SUMUJĄCA DLA KOMPUTERÓW =================================
-    public static int shoppingCartPCLog()
+    public static boolean shoppingCartPCLog()
     {
+        //zmienna cartEmpty mówi nam o tym czy lista zakupowa jest pusta czy nie, potem jej użyjemy
+        //do sprawdzenia czy możemy dokonac zakupów czy nie
+        boolean cartEmpty = true;
         if(pcOnListLog.isEmpty() && laptopOnListLog.isEmpty() && tabletOnListLog.isEmpty() && smartphoneOnListLog.isEmpty() && monitorOnListLog.isEmpty() && keyboardOnListLog.isEmpty() && mouseOnListLog.isEmpty())
         {
             System.out.println("Your shopping cart is empty!");
+            cartEmpty = true;
         }
         else
         {
-            //wpłacanie hajsu
-            DataBase walletCheck = new DataBase("SELECT wallet FROM jdbc.customers where login='"+login+"';");
-            moneyLog = walletCheck.walletUser();
-            System.out.println("Your shopping funds: "+moneyLog);
-
             //obliczanie sumy kwoty za komputery i zmiana ilości magazynowej
             for(int j=0; j< pcOnListLog.size(); j++)
             {
                 sumLog = sumLog + shoppingCartSum(pcOnListLog.get(j), "pc","PC");
                 quantityCountPcLog(j);
+                cartEmpty = false;
             }
         }
-        return moneyLog;
+        return cartEmpty;
     }
     //Liczenie ilosci dla komputerow
     public static void quantityCountPcLog(int j)
@@ -1211,20 +1211,27 @@ public class Main
     public static void shoppingCartTotalLog()
     {
         //wywołanie funkcji liczących cenę i ilość przedmiotów
-        moneyLog = shoppingCartPCLog();
+        boolean cartEmpty = shoppingCartPCLog();
         shoppingCartLaptopLog();
         shoppingCartTabletLog();
         shoppingCartSmartphoneLog();
         shoppingCartMonitorLog();
         shoppingCartKeyboardLog();
         shoppingCartMouseLog();
-        if((moneyLog-sumLog)<0 || moneyLog==0)
+
+        //wprowadzanie hajsu z bazy dla konkretnego użytkownika
+        DataBase walletCheck = new DataBase("SELECT wallet FROM jdbc.customers where login='"+login+"';");
+        moneyLog = walletCheck.walletUser();
+        int restLog = moneyLog - sumLog;
+
+        if((moneyLog-sumLog)<0 || moneyLog==0 || cartEmpty)
         {
-            System.out.println("Your order has been canceled! :(\n");
-            pcOnListLog.clear(); laptopOnListLog.clear(); tabletOnListLog.clear(); smartphoneOnListLog.clear(); monitorOnListLog.clear(); keyboardOnListLog.clear(); mouseOnListLog.clear();
+            System.out.println("Your order has been canceled! :(");
         }
         else
         {
+            System.out.println("Money left: "+restLog);
+            System.out.println("The total price of your order: "+sumLog);
             System.out.println("THE ORDER HAS BEEN SENT :)");
             //pętla do aktualizacji produktów
             for(int j=0; j<5;j++)
@@ -1257,8 +1264,16 @@ public class Main
                 int quantityActualMouse = shoppingCartQuantityCheck(j+1, "mouse", "mouse");
                 int quantityNewMouse = shoppingCartQuantityUpdate(j+1, "mouse", "mouse", (quantityActualMouse-quantityMouseLog[j]));
             }
-            //czyszczenie listy po zakupach
-            pcOnListLog.clear(); laptopOnListLog.clear(); tabletOnListLog.clear(); smartphoneOnListLog.clear(); monitorOnListLog.clear(); keyboardOnListLog.clear(); mouseOnListLog.clear();
+            //przypisanie nowej ilości hajsu po zakupach i aktualizacja w bazie portfela klienta
+            DataBase moneyUpdate = new DataBase("UPDATE jdbc.customers SET wallet = '"+restLog+"' WHERE login = '"+login+"';");
+            moneyUpdate.productInput();
+        }
+        //czyszczenie listy po zakupach
+        pcOnListLog.clear(); laptopOnListLog.clear(); tabletOnListLog.clear(); smartphoneOnListLog.clear(); monitorOnListLog.clear(); keyboardOnListLog.clear(); mouseOnListLog.clear();
+        //czyszczenie ilości danych produktów
+        for(int j=0; j<5; j++)
+        {
+            quantityPc[j]=0; quantityLaptop[j]=0; quantityTablet[j] =0; quantitySmartphone[j]=0; quantityMonitor[j]=0; quantityKeyboard[j]=0; quantityMouse[j]=0;
         }
     }
 
@@ -1274,31 +1289,29 @@ public class Main
             {
                 System.out.print("Which option do you want to buy?:");
                 int choiceBuy = inputInt();
-                switch (choiceBuy)
-                {
-                    case 1:
+                switch (choiceBuy) {
+                    case 1 -> {
                         System.out.println("Computer number 1 has been added to the cart!\n");
                         pcOnListLog.add(1);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Computer number 2 has been added to the cart!\n");
                         pcOnListLog.add(2);
-                        break;
-                    case 3:
-                            System.out.println("Computer number 3 has been added to the cart!\n");
-                            pcOnListLog.add(3);
-                            break;
-                    case 4:
-                            System.out.println("Computer number 4 has been added to the cart!\n");
-                            pcOnListLog.add(4);
-                            break;
-                    case 5:
+                    }
+                    case 3 -> {
+                        System.out.println("Computer number 3 has been added to the cart!\n");
+                        pcOnListLog.add(3);
+                    }
+                    case 4 -> {
+                        System.out.println("Computer number 4 has been added to the cart!\n");
+                        pcOnListLog.add(4);
+                    }
+                    case 5 -> {
                         System.out.println("Computer number 5 has been added to the cart!\n");
                         pcOnListLog.add(5);
-                        break;
-                    default:
-                        System.out.print("Enter correct number!\n");
                     }
+                    default -> System.out.print("Enter correct number!\n");
+                }
             }
             else
             {
@@ -1318,30 +1331,28 @@ public class Main
             {
                 System.out.print("Which option do you want to buy?:");
                 int choiceBuy = inputInt();
-                switch (choiceBuy)
-                {
-                    case 1:
+                switch (choiceBuy) {
+                    case 1 -> {
                         System.out.println("Laptop number 1 has been added to the cart!\n");
                         laptopOnListLog.add(1);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Laptop number 2 has been added to the cart!\n");
                         laptopOnListLog.add(2);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         System.out.println("Laptop number 3 has been added to the cart!\n");
                         laptopOnListLog.add(3);
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         System.out.println("Laptop number 4 has been added to the cart!\n");
                         laptopOnListLog.add(4);
-                        break;
-                    case 5:
+                    }
+                    case 5 -> {
                         System.out.println("Laptop number 5 has been added to the cart!\n");
                         laptopOnListLog.add(5);
-                        break;
-                    default:
-                        System.out.print("Enter correct number!\n");
+                    }
+                    default -> System.out.print("Enter correct number!\n");
                 }
             }
             else
@@ -1362,30 +1373,28 @@ public class Main
             {
                 System.out.print("Which option do you want to buy?:");
                 int choiceBuy = inputInt();
-                switch (choiceBuy)
-                {
-                    case 1:
+                switch (choiceBuy) {
+                    case 1 -> {
                         System.out.println("Tablet number 1 has been added to the cart!\n");
                         tabletOnListLog.add(1);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Tablet number 2 has been added to the cart!\n");
                         tabletOnListLog.add(2);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         System.out.println("Tablet number 3 has been added to the cart!\n");
                         tabletOnListLog.add(3);
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         System.out.println("Tablet number 4 has been added to the cart!\n");
                         tabletOnListLog.add(4);
-                        break;
-                    case 5:
+                    }
+                    case 5 -> {
                         System.out.println("Tablet number 5 has been added to the cart!\n");
                         tabletOnListLog.add(5);
-                        break;
-                    default:
-                        System.out.print("Enter correct number!\n");
+                    }
+                    default -> System.out.print("Enter correct number!\n");
                 }
             }
             else
@@ -1406,30 +1415,28 @@ public class Main
             {
                 System.out.print("Which option do you want to buy?:");
                 int choiceBuy = inputInt();
-                switch (choiceBuy)
-                {
-                    case 1:
+                switch (choiceBuy) {
+                    case 1 -> {
                         System.out.println("Monitor number 1 has been added to the cart!\n");
                         monitorOnListLog.add(1);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Monitor number 2 has been added to the cart!\n");
                         monitorOnListLog.add(2);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         System.out.println("Monitor number 3 has been added to the cart!\n");
                         monitorOnListLog.add(3);
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         System.out.println("Monitor number 4 has been added to the cart!\n");
                         monitorOnListLog.add(4);
-                        break;
-                    case 5:
+                    }
+                    case 5 -> {
                         System.out.println("Monitor number 5 has been added to the cart!\n");
                         monitorOnListLog.add(5);
-                        break;
-                    default:
-                        System.out.print("Enter correct number!\n");
+                    }
+                    default -> System.out.print("Enter correct number!\n");
                 }
             }
             else
@@ -1450,30 +1457,28 @@ public class Main
             {
                 System.out.print("Which option do you want to buy?:");
                 int choiceBuy = inputInt();
-                switch (choiceBuy)
-                {
-                    case 1:
+                switch (choiceBuy) {
+                    case 1 -> {
                         System.out.println("Smartphone number 1 has been added to the cart!\n");
                         smartphoneOnListLog.add(1);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Smartphone number 2 has been added to the cart!\n");
                         smartphoneOnListLog.add(2);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         System.out.println("Smartphone number 3 has been added to the cart!\n");
                         smartphoneOnListLog.add(3);
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         System.out.println("Smartphone number 4 has been added to the cart!\n");
                         smartphoneOnListLog.add(4);
-                        break;
-                    case 5:
+                    }
+                    case 5 -> {
                         System.out.println("Smartphone number 5 has been added to the cart!\n");
                         smartphoneOnListLog.add(5);
-                        break;
-                    default:
-                        System.out.print("Enter correct number!\n");
+                    }
+                    default -> System.out.print("Enter correct number!\n");
                 }
             }
             else
@@ -1495,30 +1500,28 @@ public class Main
             {
                 System.out.print("Which option do you want to buy?:");
                 int choiceBuy = inputInt();
-                switch (choiceBuy)
-                {
-                    case 1:
+                switch (choiceBuy) {
+                    case 1 -> {
                         System.out.println("Keyboard number 1 has been added to the cart!\n");
                         keyboardOnListLog.add(1);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Keyboard number 2 has been added to the cart!\n");
                         keyboardOnListLog.add(2);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         System.out.println("Keyboard number 3 has been added to the cart!\n");
                         keyboardOnListLog.add(3);
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         System.out.println("Keyboard number 4 has been added to the cart!\n");
                         keyboardOnListLog.add(4);
-                        break;
-                    case 5:
+                    }
+                    case 5 -> {
                         System.out.println("Keyboard number 5 has been added to the cart!\n");
                         keyboardOnListLog.add(5);
-                        break;
-                    default:
-                        System.out.print("Enter correct number!\n");
+                    }
+                    default -> System.out.print("Enter correct number!\n");
                 }
             }
             else
@@ -1539,30 +1542,28 @@ public class Main
             {
                 System.out.print("Which option do you want to buy?:");
                 int choiceBuy = inputInt();
-                switch (choiceBuy)
-                {
-                    case 1:
+                switch (choiceBuy) {
+                    case 1 -> {
                         System.out.println("Mouse number 1 has been added to the cart!\n");
                         mouseOnListLog.add(1);
-                        break;
-                    case 2:
+                    }
+                    case 2 -> {
                         System.out.println("Mouse number 2 has been added to the cart!\n");
                         mouseOnListLog.add(2);
-                        break;
-                    case 3:
+                    }
+                    case 3 -> {
                         System.out.println("Mouse number 3 has been added to the cart!\n");
                         mouseOnListLog.add(3);
-                        break;
-                    case 4:
+                    }
+                    case 4 -> {
                         System.out.println("Mouse number 4 has been added to the cart!\n");
                         mouseOnListLog.add(4);
-                        break;
-                    case 5:
+                    }
+                    case 5 -> {
                         System.out.println("Mouse number 5 has been added to the cart!\n");
                         mouseOnListLog.add(5);
-                        break;
-                    default:
-                        System.out.print("Enter correct number!\n");
+                    }
+                    default -> System.out.print("Enter correct number!\n");
                 }
             }
             else
@@ -1572,6 +1573,325 @@ public class Main
             }
         }
     }
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ SEKCJA ZAKUPÓW HURTOWYCH ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    //^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+
+
+
+    //VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+    //vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv SEKCJA ADMINA- PANEL ADMINISTRATORA vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
+    //VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
+
+    //próba logowanie do admina
+    public static void option3()
+    {
+        System.out.println("\n\n**************** LOGIN ****************");
+        for(int j=0; j<=3; j++)
+        {
+            //przyjazd policji po nieudanych próbach logowania
+            if(j==3)
+            {
+                System.out.println("You wanted to break in! The police will come for you soon");
+                System.exit(1);
+            }
+            System.out.print("Enter login: ");
+            login = inputString();
+            System.out.print("Enter password: ");
+            password = inputString();
+
+            DataBase loginAdmin = new DataBase("SELECT login,password FROM jdbc.admin where login = '"+login+"' AND password = '"+password+"';");
+            boolean loginAccept = loginAdmin.login();
+            if(loginAccept)
+            {
+                loginSuccessfulAdmin();
+            }
+            else {
+                System.out.println("\nIncorrect login details!");
+            }
+        }
+    }
+    //pomyślne zalogowanie do admina i wybór co chce zrobić
+    public static void loginSuccessfulAdmin()
+    {
+        System.out.println("\n\n================================== ADMIN PANEL ====================================");
+        System.out.println("Hi "+login+"!, Here is the management panel");
+        do {
+            System.out.println();
+            menuAdmin();
+            System.out.print("What do you want to do? :");
+            int choiceOption = inputInt();
+            System.out.println();
+
+            switch (choiceOption) {
+                case 1 -> {
+                    while (true) {
+                        System.out.print("Do you want to add a computer? (yes/no): ");
+                        String choice = inputString();
+                        if (choice.equals("yes")) {
+                            addPc();
+                        } else break;
+                    }
+                }
+                case 2 -> {
+                    while (true) {
+                        System.out.print("Do you want to add a Laptop (yes/no): ");
+                        String choice = inputString();
+                        if (choice.equals("yes")) {
+                            addLaptop();
+                        } else break;
+                    }
+                }
+                case 3 -> {
+                    while (true) {
+                        System.out.print("Do you want to add a Tablet (yes/no): ");
+                        String choice = inputString();
+                        if (choice.equals("yes")) {
+                            addTablet();
+                        } else break;
+                    }
+                }
+                case 4 -> {
+                    while (true) {
+                        System.out.print("Do you want to add a Smartphone (yes/no): ");
+                        String choice = inputString();
+                        if (choice.equals("yes")) {
+                            addSmartphone();
+                        } else break;
+                    }
+                }
+                case 5 -> {
+                    while (true) {
+                        System.out.print("Do you want to add a Monitor (yes/no): ");
+                        String choice = inputString();
+                        if (choice.equals("yes")) {
+                            addMonitor();
+                        } else break;
+                    }
+                }
+                case 6 -> {
+                    while (true) {
+                        System.out.print("Do you want to add a Keyboard (yes/no): ");
+                        String choice = inputString();
+                        if (choice.equals("yes")) {
+                            addKeyboard();
+                        } else break;
+                    }
+                }
+                case 7 -> {
+                    while (true) {
+                        System.out.print("Do you want to add a Mouse (yes/no): ");
+                        String choice = inputString();
+                        if (choice.equals("yes")) {
+                            addMouse();
+                        } else break;
+                    }
+                }
+                case 8 -> whichOption();
+                default -> System.out.println("Enter correct number!\n");
+            }
+        } while (true);
+    }
+    //dodawanie komputerów do bazy
+    public static void addPc()
+    {
+        //walidacja danych here
+        String mark = inputStringMessage("Enter mark: ");
+        String model = inputStringMessage("Enter model: ");
+        String cpu = inputStringMessage("Enter cpu: ");
+        String gpu = inputStringMessage("Enter gpu: ");
+        String ram = inputStringMessage("Enter ram: ");
+        String disk = inputStringMessage("Enter disk: ");
+        int price = inputIntMessage("Enter price: ");
+        int quantity = inputIntMessage("Enter quantity: ");
+        if(mark.length() >39 || model.length() >39 || cpu.length()>39 || gpu.length()>39 || ram.length()>39 || disk.length()>39)
+        {
+            System.out.println("Enter the correct values again!");
+            addPc();
+        }
+        else if(price <=0 || quantity <=0)
+        {
+            System.out.println("Enter the correct values again for price or quantity!");
+            addPc();
+        }
+        else
+        {
+            PersonalComputer pc = new PersonalComputer(mark, model, cpu, gpu, ram, disk, price, quantity);
+            DataBase pcNew = new DataBase("INSERT INTO `jdbc`.`pc` (`mark`, `model`, `cpu`, `gpu`, `ram`, `disk`, `price`, `quantity`) VALUES ('"+mark+"', '"+model+"', '"+cpu+"', '"+gpu+"', '"+ram+"', '"+disk+"', '"+price+"', '"+quantity+"');");
+            pcNew.productInput();
+            System.out.println("The computer has been added successfully\n");
+        }
+
+    }
+    //dodawanie laptopów do bazy
+    public static void addLaptop()
+    {
+        String mark = inputStringMessage("Enter mark: ");
+        String model = inputStringMessage("Enter model: ");
+        String cpu = inputStringMessage("Enter cpu: ");
+        String gpu = inputStringMessage("Enter gpu: ");
+        String ram = inputStringMessage("Enter ram: ");
+        String disk = inputStringMessage("Enter disk: ");
+        double screenDiagonal = inputDoubleMessage("Enter the diagonal of the screen: ");
+        int price = inputIntMessage("Enter price: ");
+        int quantity = inputIntMessage("Enter quantity: ");
+        if(mark.length() >39 || model.length() >39 || cpu.length()>39 || gpu.length()>39 || ram.length()>39 || disk.length()>39)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addLaptop();
+        }
+        else if(price <=0 || quantity <=0 || screenDiagonal<=0 || screenDiagonal>25)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addTablet();
+        }
+        else
+        {
+           Laptop laptop = new Laptop(mark, model, price, quantity, cpu, gpu, ram, disk, screenDiagonal);
+           DataBase laptopNew = new DataBase("INSERT INTO `jdbc`.`laptop` (`mark`, `model`, `cpu`, `gpu`, `ram`, `disk`, `screenDiagonal`, `price`, `quantity`) VALUES ('"+mark+"', '"+model+"', '"+cpu+"', '"+gpu+"', '"+ram+"', '"+disk+"', '"+screenDiagonal+"', '"+price+"', '"+quantity+"');");
+           laptopNew.productInput();
+            System.out.println("The Laptop has been added successfully\n");
+        }
+    }
+    //dodawnie tabletów do bazy
+    public static void addTablet()
+    {
+        String mark = inputStringMessage("Enter mark: ");
+        String model = inputStringMessage("Enter model: ");
+        String ram = inputStringMessage("Enter ram: ");
+        String memory = inputStringMessage("Enter memory: ");
+        double screenDiagonal = inputDoubleMessage("Enter the diagonal of the screen: ");
+        int price = inputIntMessage("Enter price: ");
+        int quantity = inputIntMessage("Enter quantity: ");
+        if(mark.length() >39 || model.length() >39 || ram.length()>39 || memory.length()>39)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addTablet();
+        }
+        else if(price <=0 || quantity <=0 || screenDiagonal<=0 || screenDiagonal>25)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addTablet();
+        }
+        else
+        {
+            Tablet tablet = new Tablet(mark, model, price, quantity, ram, memory, (int) screenDiagonal);
+            DataBase tabletNew = new DataBase("INSERT INTO `jdbc`.`tablet` (`mark`, `model`, `ram`, `memory`, `screenSize`, `price`, `quantity`) VALUES ('"+mark+"', '"+model+"', '"+ram+"', '"+memory+"', '"+screenDiagonal+"', '"+price+"', '"+quantity+"');");
+            tabletNew.productInput();
+            System.out.println("The Tablet has been added successfully\n");
+        }
+    }
+    public static void addSmartphone()
+    {
+        String mark = inputStringMessage("Enter mark: ");
+        String model = inputStringMessage("Enter model: ");
+        String ram = inputStringMessage("Enter ram: ");
+        String memory = inputStringMessage("Enter memory: ");
+        double screenDiagonal = inputDoubleMessage("Enter the diagonal of the screen: ");
+        int price = inputIntMessage("Enter price: ");
+        int quantity = inputIntMessage("Enter quantity: ");
+        if(mark.length() >39 || model.length() >39 || ram.length()>39 || memory.length()>39)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addSmartphone();
+        }
+        else if(price <=0 || quantity <=0 || screenDiagonal<=0 || screenDiagonal>25)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addSmartphone();
+        }
+        else
+        {
+            Smartphone smartphone = new Smartphone(mark, model, price, quantity, ram, memory, (int) screenDiagonal);
+            DataBase smartphoneNew = new DataBase("INSERT INTO `jdbc`.`smartphone` (`mark`, `model`, `ram`, `memory`, `screenSize`, `price`, `quantity`) VALUES ('"+mark+"', '"+model+"', '"+ram+"', '"+memory+"', '"+screenDiagonal+"', '"+price+"', '"+quantity+"');");
+            smartphoneNew.productInput();
+            System.out.println("The Smartphone has been added successfully\n");
+        }
+    }
+    public static void addMonitor()
+    {
+        String mark = inputStringMessage("Enter mark: ");
+        String model = inputStringMessage("Enter model: ");
+        String matrix = inputStringMessage("Enter matrix: ");
+        String resolution = inputStringMessage("Enter resolution: ");
+        int price = inputIntMessage("Enter price: ");
+        int quantity = inputIntMessage("Enter quantity: ");
+        if(mark.length() >39 || model.length() >39 || matrix.length()>15 || resolution.length()>30)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addMonitor();
+        }
+        else if(price <=0 || quantity <=0)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addMonitor();
+        }
+        else
+        {
+            Monitor monitor = new Monitor(mark, model, price, quantity, matrix, resolution);
+            DataBase monitorNew = new DataBase("INSERT INTO `jdbc`.`monitor` (`mark`, `model`, `matrix`, `resolution`, `price`, `quantity`) VALUES ('"+mark+"', '"+model+"', '"+matrix+"', '"+resolution+"',  '"+price+"', '"+quantity+"');");
+            monitorNew.productInput();
+            System.out.println("The Monitor has been added successfully\n");
+        }
+    }
+    public static void addKeyboard()
+    {
+        String mark = inputStringMessage("Enter mark: ");
+        String model = inputStringMessage("Enter model: ");
+        String connection = inputStringMessage("Enter connection (wired / wireless): ");
+        String switchKeyboard = inputStringMessage("Enter keyboard switch: ");
+        String backlight = inputStringMessage("Enter keyboard light (ONLY: yes / no): ");
+        int price = inputIntMessage("Enter price: ");
+        int quantity = inputIntMessage("Enter quantity: ");
+        if(mark.length() >39 || model.length() >39 || switchKeyboard.length()>15 || backlight.length()>5)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addKeyboard();
+        }
+        else if(price <=0 || quantity <=0)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addKeyboard();
+        }
+        else
+        {
+            Keyboard keyboard = new Keyboard(mark, model, connection, switchKeyboard, price, quantity, backlight);
+            DataBase monitorNew = new DataBase("INSERT INTO `jdbc`.`keyboard` (`mark`, `model`, `connection`, `switch`, `backlight`, `price`, `quantity`) VALUES ('"+mark+"', '"+model+"', '"+connection+"', '"+switchKeyboard+"', '"+backlight+"', '"+price+"', '"+quantity+"');");
+            monitorNew.productInput();
+            System.out.println("The Keyboard has been added successfully\n");
+        }
+    }
+    public static void addMouse()
+    {
+        String mark = inputStringMessage("Enter mark: ");
+        String model = inputStringMessage("Enter model: ");
+        String connection = inputStringMessage("Enter connection (wired / wireless): ");
+        int price = inputIntMessage("Enter price: ");
+        int quantity = inputIntMessage("Enter quantity: ");
+        if(mark.length() >39 || model.length() >39)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addMouse();
+        }
+        else if(price <=0 || quantity <=0)
+        {
+            System.out.println("Enter the correct values again!\n");
+            addMouse();
+        }
+        else
+        {
+            Mouse mouse = new Mouse(mark,model,price,quantity,connection);
+            DataBase mouseNew = new DataBase("INSERT INTO `jdbc`.`mouse` (`mark`, `model`, `connection`, `price`, `quantity`) VALUES ('"+mark+"', '"+model+"', '"+connection+"', '"+price+"', '"+quantity+"');");
+            mouseNew.productInput();
+            System.out.println("The Mouse has been added successfully\n");
+        }
+    }
+
+
+
+
 
     //================================ SEKCJA SCANNEROW DO METOD ================================
     public static String inputString()
@@ -1583,6 +1903,24 @@ public class Main
     {
         Scanner input = new Scanner(System.in);
         return input.nextInt();
+    }
+    public static String inputStringMessage(String message)
+    {
+        System.out.print(message);
+        Scanner input = new Scanner(System.in);
+        return input.nextLine();
+    }
+    public static int inputIntMessage(String message)
+    {
+        System.out.print(message);
+        Scanner input = new Scanner(System.in);
+        return input.nextInt();
+    }
+    public static double inputDoubleMessage(String message)
+    {
+        System.out.print(message);
+        Scanner input = new Scanner(System.in);
+        return input.nextDouble();
     }
 
     //================================ SEKCJA MENU, PRINTY ================================
@@ -1597,14 +1935,30 @@ public class Main
     }
     public static void menuProducts()
     {
-        System.out.println("1) Show Personal Computers");
-        System.out.println("2) Show Laptops");
-        System.out.println("3) Show Tablet");
-        System.out.println("4) Show Smartphones");
-        System.out.println("5) Show Monitors");
-        System.out.println("6) Show Keyboards");
-        System.out.println("7) Show Mouse");
-        System.out.println("8) Buy things from your own shopping cart");
-        System.out.println("9) GO BACK");
+        System.out.println("**********************************************");
+        System.out.println("1) Show Personal Computers                   *");
+        System.out.println("2) Show Laptops                              *");
+        System.out.println("3) Show Tablet                               *");
+        System.out.println("4) Show Smartphones                          *");
+        System.out.println("5) Show Monitors                             *");
+        System.out.println("6) Show Keyboards                            *");
+        System.out.println("7) Show Mouse                                *");
+        System.out.println("8) Buy things from your own shopping cart    *");
+        System.out.println("9) GO BACK                                   *");
+        System.out.println("**********************************************");
+    }
+
+    public static void menuAdmin()
+    {
+        System.out.println("****************************************");
+        System.out.println("1) Add Personal computer to database   *");
+        System.out.println("2) Add Laptop to database              *");
+        System.out.println("3) Add Tablet to database              *");
+        System.out.println("4) Add Smartphone to database          *");
+        System.out.println("5) Add Monitor to database             *");
+        System.out.println("6) Add Keyboard to database            *");
+        System.out.println("7) Add Mouse to database               *");
+        System.out.println("8) GO BACK                             *");
+        System.out.println("****************************************");
     }
 }

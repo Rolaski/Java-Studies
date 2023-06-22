@@ -1,9 +1,9 @@
 public class Keyboard extends Product implements ProductsInterface
 {
     String connection, keyboardSwitch;
-    boolean backLight;
+    String backLight;
 
-    public Keyboard(String mark, String model, String connection, String keyboardSwitch, int price, int quantity, boolean backLight) {
+    public Keyboard(String mark, String model, String connection, String keyboardSwitch, int price, int quantity, String backLight) {
         super(mark, model, price, quantity);
         this.connection = connection;
         this.keyboardSwitch = keyboardSwitch;
@@ -64,11 +64,4 @@ public class Keyboard extends Product implements ProductsInterface
         this.quantity = quantity;
     }
 
-    public boolean isBackLight() {
-        return backLight;
-    }
-
-    public void setBackLight(boolean backLight) {
-        this.backLight = backLight;
-    }
 }
