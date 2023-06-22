@@ -349,5 +349,111 @@ public class DataBase
             throw new RuntimeException(e);
         }
     }
+        //======================= SEKCJA WYPISYWANIA INFORMACJI DLA PODANEGO ID I TABELI ============================
+    public static int i=1;
+    public void showInfo(Integer id, String whichTable)
+    {
+        Connection connect = null;
+        try {
+            //z czym się łączymy
+            connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "");
+            //tworzenie połączenie
+            Statement statement = connect.createStatement();
+            //zapytanie wypisujące z kwerendy, zakładamy że wszystko
+            ResultSet resultPrint = statement.executeQuery(query);
+            if(whichTable.equals("pc"))
+            {
+                while(resultPrint.next())
+                {
+                    System.out.print((i++)+") "+resultPrint.getString(2)+" ");
+                    System.out.print(resultPrint.getString(3)+" ");
+                    System.out.print("CPU: "+resultPrint.getString(4)+" ");
+                    System.out.print("GPU: "+resultPrint.getString(5)+" ");
+                    System.out.print("RAM: "+resultPrint.getString(6)+" ");
+                    System.out.print("DISK: "+resultPrint.getString(7)+" ");
+                    System.out.print("PRICE: "+resultPrint.getInt(8)+"zł\n");
+                }
+            }
+            else if(whichTable.equals("laptop"))
+            {
+                while (resultPrint.next())
+                {
+                    System.out.print((i++)+") "+resultPrint.getString(2)+" ");
+                    System.out.print(resultPrint.getString(3)+" ");
+                    System.out.print(resultPrint.getString(4)+" ");
+                    System.out.print(resultPrint.getString(5)+" ");
+                    System.out.print(resultPrint.getString(6)+" ");
+                    System.out.print(resultPrint.getString(7)+" ");
+                    System.out.print(resultPrint.getInt(8)+" ");
+                    System.out.print("    price: "+resultPrint.getInt(9)+"\n");
+                }
+            }
+            else if(whichTable.equals("tablet"))
+            {
+                while(resultPrint.next())
+                {
+                    System.out.print((i++)+") "+resultPrint.getString(2)+" ");
+                    System.out.print(resultPrint.getString(3)+" ");
+                    System.out.print(resultPrint.getString(4)+" ");
+                    System.out.print(resultPrint.getString(5)+" ");
+                    System.out.print(resultPrint.getInt(6)+" ");
+                    System.out.print("    price: "+resultPrint.getInt(7)+"\n");
+                }
+            }
+            else if(whichTable.equals("smartphone"))
+            {
+                while (resultPrint.next())
+                {
+                    System.out.print(i+") "+resultPrint.getString(2)+" ");
+                    System.out.print(resultPrint.getString(3)+" ");
+                    System.out.print(resultPrint.getString(4)+" ");
+                    System.out.print(resultPrint.getString(5)+" ");
+                    System.out.print(resultPrint.getInt(6)+" ");
+                    System.out.print("    price: "+resultPrint.getInt(7)+"\n");
+                    i++;
+                }
+            }
+            else if(whichTable.equals("monitor"))
+            {
+                while (resultPrint.next())
+                {
+                    System.out.print(i+") "+resultPrint.getString(2)+" ");
+                    System.out.print(resultPrint.getString(3)+" ");
+                    System.out.print(resultPrint.getString(4)+" ");
+                    System.out.print(resultPrint.getString(5)+" ");
+                    System.out.print("    price: "+resultPrint.getInt(6)+"\n");
+                    i++;
+                }
+            }
+            else if(whichTable.equals("keyboard"))
+            {
+                while (resultPrint.next())
+                {
+                    System.out.print(i+") "+resultPrint.getString(2)+" ");
+                    System.out.print(resultPrint.getString(3)+" ");
+                    System.out.print(resultPrint.getString(4)+" ");
+                    System.out.print(resultPrint.getString(5)+" ");
+                    System.out.print("backlight: "+resultPrint.getBoolean(6)+" ");
+                    System.out.print("    price: "+resultPrint.getInt(7)+"\n");
+                    i++;
+                }
+            }
+            else if(whichTable.equals("mouse"))
+            {
+                while (resultPrint.next())
+                {
+                    System.out.print(i+") "+resultPrint.getString(2)+" ");
+                    System.out.print(resultPrint.getString(3)+" ");
+                    System.out.print(resultPrint.getString(4)+" ");
+                    System.out.print("    price: "+resultPrint.getInt(5)+"\n");
+                    i++;
+                }
+            }
+            //zakończenie połączenia
+            connect.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }
