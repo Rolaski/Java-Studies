@@ -1,0 +1,278 @@
+@startuml
+class shoppingCartOperations {
++ {static} int shoppingCartSum(Integer,String,String)
++ {static} int shoppingCartQuantityUpdate(Integer,String,String,int)
++ {static} int shoppingCartQuantityCheck(Integer,String,String)
+}
+class Smartphone {
+~ String RAM
+~ int screenSize
++ String toString()
++ String getRAM()
++ void setRAM(String)
++ String getMemory()
++ void setMemory(String)
++ int getScreenSize()
++ void setScreenSize(int)
+}
+class adminPanel {
++ {static} String login
++ {static} void option3()
++ {static} void loginSuccessfulAdmin()
++ {static} void addPc()
++ {static} void addLaptop()
++ {static} void addTablet()
++ {static} void addSmartphone()
++ {static} void addMonitor()
++ {static} void addKeyboard()
++ {static} void addMouse()
++ {static} void addUser()
+}
+class Mouse {
+~ String connection
++ String toString()
++ String getConnection()
++ void setConnection(String)
+}
+class Monitor {
+~ String matrix
++ String toString()
++ String getMatrix()
++ void setMatrix(String)
++ String getResolution()
++ void setResolution(String)
+}
+class retailShopping {
+~ {static} int sum
+~ {static} int[] quantityPc
+~ {static} int[] quantityLaptop
+~ {static} int[] quantityTablet
+~ {static} int[] quantitySmartphone
+~ {static} int[] quantityMonitor
+~ {static} int[] quantityKeyboard
+~ {static} int[] quantityMouse
++ {static} ArrayList<Integer> pcOnList
++ {static} ArrayList<Integer> laptopOnList
++ {static} ArrayList<Integer> tabletOnList
++ {static} ArrayList<Integer> smartphoneOnList
++ {static} ArrayList<Integer> monitorOnList
++ {static} ArrayList<Integer> keyboardOnList
++ {static} ArrayList<Integer> mouseOnList
++ {static} int x
++ {static} void option1()
++ {static} void shoppingCartPC()
++ {static} void quantityCountPc(int)
++ {static} void shoppingCartLaptop()
++ {static} void quantityCountLaptop(int)
++ {static} void shoppingCartTablet()
++ {static} void quantityCountTablet(int)
++ {static} void shoppingCartSmartphone()
++ {static} void quantityCountSmartpone(int)
++ {static} void shoppingCartMonitor()
++ {static} void quantityCountMonitor(int)
++ {static} void shoppingCartKeyboard()
++ {static} void quantityCountKeyboard(int)
++ {static} void shoppingCartMouse()
++ {static} void quantityCountMouse(int)
++ {static} void shoppingCartTotal()
++ {static} void buyingPC()
++ {static} void buyingLaptop()
++ {static} void buyingTablet()
++ {static} void buyingMonitor()
++ {static} void buyingSmartphone()
++ {static} void buyingKeyboard()
++ {static} void buyingMouse()
+}
+class showCartWholesale {
+~ {static} int[] quantityPcCartLog
+~ {static} int[] quantityLaptopCartLog
+~ {static} int[] quantityTabletCartLog
+~ {static} int[] quantitySmartphoneCartLog
+~ {static} int[] quantityMonitorCartLog
+~ {static} int[] quantityKeyboardCartLog
+~ {static} int[] quantityMouseCartLog
+~ {static} int sum
++ {static} void showCartAll()
+}
+class DataBase {
+- String query
++ {static} int i
++ void setQuery(String)
++ void showPc()
++ void showLaptop()
++ void showTablet()
++ void showSmartphone()
++ void showMonitor()
++ void showKeyboard()
++ void showMouse()
++ int totalPrice()
++ int totalQuantity()
++ int updateQuantity()
++ boolean login()
++ int walletUser()
++ void productInput()
++ void showInfo(Integer,String)
+}
+class Tablet {
+~ String RAM
+~ int screenSize
++ String toString()
++ String getRAM()
++ void setRAM(String)
++ String getMemory()
++ void setMemory(String)
++ int getScreenSize()
++ void setScreenSize(int)
+}
+class Product {
++ String mark
++ int price
++ void setMark(String)
++ void setModel(String)
++ void setPrice(int)
++ void setQuantity(int)
++ String getMark()
++ String getModel()
++ int getPrice()
++ int getQuantity()
++ String toString()
++ String inputString()
++ int inputInt()
+}
+class wholesaleShopping {
++ {static} ArrayList<Integer> pcOnListLog
++ {static} ArrayList<Integer> laptopOnListLog
++ {static} ArrayList<Integer> tabletOnListLog
++ {static} ArrayList<Integer> smartphoneOnListLog
++ {static} ArrayList<Integer> monitorOnListLog
++ {static} ArrayList<Integer> keyboardOnListLog
++ {static} ArrayList<Integer> mouseOnListLog
++ {static} String login
++ {static} int sumLog
+~ {static} int[] quantityPcLog
+~ {static} int[] quantityLaptopLog
+~ {static} int[] quantityTabletLog
+~ {static} int[] quantitySmartphoneLog
+~ {static} int[] quantityMonitorLog
+~ {static} int[] quantityKeyboardLog
+~ {static} int[] quantityMouseLog
++ {static} void option2()
++ {static} void loginSuccessful()
++ {static} boolean shoppingCartPCLog()
++ {static} void quantityCountPcLog(int)
++ {static} void shoppingCartLaptopLog()
++ {static} void quantityCountLaptopLog(int)
++ {static} void shoppingCartTabletLog()
++ {static} void quantityCountTabletLog(int)
++ {static} void shoppingCartSmartphoneLog()
++ {static} void quantityCountSmartponeLog(int)
++ {static} void shoppingCartMonitorLog()
++ {static} void quantityCountMonitorLog(int)
++ {static} void shoppingCartKeyboardLog()
++ {static} void quantityCountKeyboardLog(int)
++ {static} void shoppingCartMouseLog()
++ {static} void quantityCountMouseLog(int)
++ {static} void shoppingCartTotalLog()
++ {static} void buyingPCLog()
++ {static} void buyingLaptopLog()
++ {static} void buyingTabletLog()
++ {static} void buyingMonitorLog()
++ {static} void buyingSmartphoneLog()
++ {static} void buyingKeyboardLog()
++ {static} void buyingMouseLog()
+}
+class clientWallet {
++ {static} void clientWalletCheck(String)
++ {static} void clientWalletUpdate(String)
+}
+class Laptop {
+~ String processor
+~ double screenDiagonal
++ String toString()
++ String getProcessor()
++ void setProcessor(String)
++ String getGraphicsCard()
++ void setGraphicsCard(String)
++ String getRAM()
++ void setRAM(String)
++ String getDisk()
++ void setDisk(String)
++ double getScreenDiagonal()
++ void setScreenDiagonal(double)
+}
+class allMenu {
++ {static} void whichOption()
++ {static} void menu()
++ {static} void menuProducts()
++ {static} void menuProductsLog()
++ {static} void menuAdmin()
+}
+interface ProductsInterface {
++ String toString()
+}
+class PersonalComputer {
+- String processor
++ String getProcessor()
++ void setProcessor(String)
++ String getGraphicsCard()
++ void setGraphicsCard(String)
++ String getRAM()
++ void setRAM(String)
++ String getDisk()
++ void setDisk(String)
++ String toString()
++ String inputString()
++ int inputInt()
+}
+class Main {
++ {static} void main(String[])
+}
+class showCart {
+~ {static} int[] quantityPcCart
+~ {static} int[] quantityLaptopCart
+~ {static} int[] quantityTabletCart
+~ {static} int[] quantitySmartphoneCart
+~ {static} int[] quantityMonitorCart
+~ {static} int[] quantityKeyboardCart
+~ {static} int[] quantityMouseCart
+~ {static} int sum
++ {static} void showCartAll()
+}
+class Keyboard {
+~ String connection
+~ String backLight
++ String toString()
++ String getConnection()
++ void setConnection(String)
++ String getKeyboardSwitch()
++ void setKeyboardSwitch(String)
++ int getPrice()
++ void setPrice(int)
++ int getQuantity()
++ void setQuantity(int)
+}
+class inputs {
++ {static} String inputString()
++ {static} int inputInt()
++ {static} String inputStringMessage(String)
++ {static} int inputIntMessage(String)
++ {static} double inputDoubleMessage(String)
+}
+
+
+ProductsInterface <|.. Smartphone
+Product <|-- Smartphone
+ProductsInterface <|.. Mouse
+Product <|-- Mouse
+ProductsInterface <|.. Monitor
+Product <|-- Monitor
+ProductsInterface <|.. Tablet
+Product <|-- Tablet
+ProductsInterface <|.. Product
+ProductsInterface <|.. Laptop
+Product <|-- Laptop
+ProductsInterface <|.. PersonalComputer
+Product <|-- PersonalComputer
+ProductsInterface <|.. Keyboard
+Product <|-- Keyboard
+@enduml
