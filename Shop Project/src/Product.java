@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class Product implements ProductsInterface
 {
     public String mark, model;

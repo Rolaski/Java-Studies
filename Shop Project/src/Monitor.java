@@ -1,3 +1,4 @@
+
 public class Monitor extends Product implements ProductsInterface
 {
     String matrix, resolution;

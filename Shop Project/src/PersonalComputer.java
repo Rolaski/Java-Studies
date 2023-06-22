@@ -1,5 +1,4 @@
 import java.util.Scanner;
-
 public class PersonalComputer extends Product implements ProductsInterface
 {
     private String processor, graphicsCard, RAM, disk;

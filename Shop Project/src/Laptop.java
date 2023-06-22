@@ -1,3 +1,4 @@
+
 public class Laptop extends Product implements ProductsInterface
 {
     String processor, graphicsCard, RAM, disk;
