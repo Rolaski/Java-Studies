@@ -73,6 +73,8 @@ public class retailShopping
                     {
                         quantityPc[j]=0; quantityLaptop[j]=0; quantityTablet[j] =0; quantitySmartphone[j]=0;
                         quantityMonitor[j]=0; quantityKeyboard[j]=0; quantityMouse[j]=0;
+                        showCart.quantityPcCart[j] =0; showCart.quantityLaptopCart[j] =0; showCart.quantityTabletCart[j]=0; showCart.quantityMonitorCart[j]=0;
+                        showCart.quantityKeyboardCart[j]=0; showCart.quantityMouseCart[j]=0;
                     }
                     allMenu.whichOption();
                 default:
@@ -414,6 +416,8 @@ public class retailShopping
         for(int j=0; j<5; j++)
         {
             quantityPc[j]=0; quantityLaptop[j]=0; quantityTablet[j] =0; quantitySmartphone[j]=0; quantityMonitor[j]=0; quantityKeyboard[j]=0; quantityMouse[j]=0;
+            showCart.quantityPcCart[j] =0; showCart.quantityLaptopCart[j] =0; showCart.quantityTabletCart[j]=0; showCart.quantityMonitorCart[j]=0;
+            showCart.quantityKeyboardCart[j]=0; showCart.quantityMouseCart[j]=0;
         }
         x=0;
         money = rest;

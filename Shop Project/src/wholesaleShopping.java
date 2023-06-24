@@ -122,6 +122,8 @@ public class wholesaleShopping
                     {
                         quantityPcLog[j] = 0; quantityLaptopLog[j] = 0; quantityTabletLog[j]=0;
                         quantitySmartphoneLog[j]=0; quantityMonitorLog[j]=0; quantityKeyboardLog[j]=0; quantityMouseLog[j]=0;
+                        showCartWholesale.quantityPcCartLog[j] =0; showCartWholesale.quantityLaptopCartLog[j] =0; showCartWholesale.quantityTabletCartLog[j]=0; showCartWholesale.quantityMonitorCartLog[j]=0;
+                        showCartWholesale.quantityKeyboardCartLog[j]=0; showCartWholesale.quantityMouseCartLog[j]=0;
                     }
                     allMenu.whichOption();
                 default:
@@ -457,6 +459,8 @@ public class wholesaleShopping
         for(int j=0; j<5; j++)
         {
             quantityPcLog[j]=0; quantityLaptopLog[j]=0; quantityTabletLog[j] =0; quantitySmartphoneLog[j]=0; quantityMonitorLog[j]=0; quantityKeyboardLog[j]=0; quantityMouseLog[j]=0;
+            showCartWholesale.quantityPcCartLog[j] =0; showCartWholesale.quantityLaptopCartLog[j] =0; showCartWholesale.quantityTabletCartLog[j]=0; showCartWholesale.quantityMonitorCartLog[j]=0;
+            showCartWholesale.quantityKeyboardCartLog[j]=0; showCartWholesale.quantityMouseCartLog[j]=0;
         }
     }
 
