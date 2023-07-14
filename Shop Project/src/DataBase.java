@@ -10,7 +10,7 @@ public class DataBase
         this.query = query;
     }
 
-    //kwerenda
+    //ustawianie kwerendy
     public void setQuery(String query)
     {
         this.query = query;
@@ -241,6 +241,7 @@ public class DataBase
             {
                 sum = sum + resultPrint.getInt("price");
             }
+            connect.close();
         }
         catch (SQLException e)
         {
@@ -264,6 +265,7 @@ public class DataBase
             {
                 quantity = resultPrint.getInt("quantity");
             }
+            connect.close();
         }
         catch (SQLException e)
         {
@@ -281,6 +283,7 @@ public class DataBase
             connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "");
             Statement statement = connect.createStatement();
             updateQuantity = statement.executeUpdate(query);
+            connect.close();
         }
         catch (SQLException e)
         {
@@ -288,7 +291,6 @@ public class DataBase
         }
         return updateQuantity;
     }
-
     //============================= SEKCJA SPRAWDZANIA UŻYTKOWNIKA W BAZIE =============================
     public boolean login()
     {
@@ -303,6 +305,7 @@ public class DataBase
             {
                 isNull = true;
             }
+            connect.close();
         }
         catch (SQLException e)
         {
@@ -325,7 +328,7 @@ public class DataBase
             {
                 wallet = resultSet.getInt("wallet");
             }
-
+            connect.close();
         }
         catch (SQLException e)
         {
@@ -343,6 +346,7 @@ public class DataBase
             connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/jdbc", "root", "");
             Statement statement = connect.createStatement();
             statement.executeUpdate(query);
+            connect.close();
         }
         catch (SQLException e)
         {

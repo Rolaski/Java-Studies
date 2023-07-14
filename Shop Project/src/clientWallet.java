@@ -1,5 +1,3 @@
-import javax.xml.crypto.Data;
-
 public class clientWallet
 {
     public static void clientWalletCheck(String login)
